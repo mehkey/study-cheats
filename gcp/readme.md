@@ -38,6 +38,42 @@ https://cloud.google.com/compute/docs/protocol-forwarding
 Uses Instance groups to scale by creating instance templates
 
 
+ Images can be created from four sources: disks, snapshots, cloud storage files, or another image. You can create disk images from the following sources:
+
+    A persistent disk, even while that disk is attached to an instance
+    A snapshot of a persistent disk
+    Another image in your project
+    An image that is shared from another project
+    A compressed RAW image in Cloud Storage
+
+https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images
+https://cloud.google.com/compute/docs/import
+
+ If you use the Cloud SDK tooling to deploy your app, such as gcloud app deploy, you can set the following autoscaling parameters in the app.yaml configuration file:
+
+    min_instances
+    max_instances
+    target_throughput_utilization
+    target_cpu_utilization
+
+However, if you deploy using the appcfg tool from the App Engine SDK for Python 2, you cannot set those autoscaling parameters in the app.yaml configuration file. Instead, you must omit these parameters from the configuration file and set them directly in the API Explorer user interface, after deploying your app.
+
+ When an image is marked obsolete, it is no longer available for use. An error message is returned if you try to use this image in a request. Existing links to this image are still allowed.
+https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images
+
+
+ The start method restarts an instance in a TERMINATED state, whereas methods such as reset and sudo reboot only work on instances that are currently running. Almost all instances can be restarted, as long as the instance is in a TERMINATED state.
+https://cloud.google.com/compute/docs/instances/stop-start-instance
+
+
+ The Cloud Monitoring agent is a collectd-based daemon that gathers system and application metrics from virtual machine instances and sends them to Monitoring. By default, the Monitoring agent collects disk, CPU, network, and process metrics. You can configure the Monitoring agent to monitor third-party applications to get the full list of agent metrics.
+https://cloud.google.com/monitoring/agent
+
+ An instance group is a collection of virtual machine (VM) instances that you can manage as a single entity. Compute Engine offers two kinds of VM instance groups, managed and unmanaged:
+
+    Managed instance groups (MIGs) let you operate apps on multiple identical VMs. You can make your workloads scalable and highly available by taking advantage of automated MIG services, including autoscaling, autohealing, regional (multiple zone) deployment, and automatic updating.
+    Unmanaged instance groups let you load balance across a fleet of VMs that you manage yourself.
+
 
 # Cloud Run
 
@@ -52,11 +88,13 @@ Dataproc is a fully managed and highly scalable service for running Apache Hadoo
 https://cloud.google.com/dataproc/docs/concepts/overview
 
 
-# Big Query
+# Big Query BigQuery
  When you run a query, a temporary, cached results table is created in a special dataset referred to as an anonymous dataset. Unlike regular datasets that inherit permissions from the IAM resource hierarchy model (project and organization permissions), access to anonymous datasets is restricted to the dataset owner. The owner of an anonymous dataset is the user who ran the query that produced the cached result.
 https://cloud.google.com/bigquery/docs/cached-results
 
-
+Groups Batch queries
+ BigQuery offers batch queries. BigQuery queues each batch query on your behalf and starts the query as soon as idle resources are available in the BigQuery shared resource pool. This usually occurs within a few minutes. If BigQuery hasn't started the query within 24 hours, BigQuery changes the job priority to interactive. Batch queries don't count toward your concurrent rate limit, which can make it easier to start many queries at once. Batch queries use the same resources as interactive (on-demand) queries.
+https://cloud.google.com/bigquery/docs/running-queries
 
 ## Storages
 ## Big Table
@@ -67,7 +105,7 @@ https://cloud.google.com/bigtable/docs/schema-design-time-series
 
 
 # Local SSD
-
+ Local SSD (block) is the best GCP Cloud storage product for flash-optimized databases.  https://cloud.google.com/products/storage
 
 # Persistent Disk
 
@@ -98,6 +136,9 @@ Google Cloud provides a variety of storage services including consistent, scalab
 
  Signed URLs allow users to access resources for a limited or defined time.
 https://cloud.google.com/storage/docs/access-control/signed-urls
+
+ Objects stored in Cloud Storage have metadata associated with them. Metadata identifies properties of the object, as well as specifies how the object should be handled when it's accessed. Metadata exists as key:value pairs. You can edit the following metadata for objects, though you must have sufficient permission to do so: Access control metadata, Cache-Control, Content-Disposition, Content-Encoding, Content-Language, Content-Type, Custom-Time, Object holds.
+https://cloud.google.com/storage/docs/metadata
 
 
 # Filestore Datastore
@@ -130,12 +171,13 @@ https://cloud.google.com/vpc/docs/vpc
 # Auto
  Unless you choose to disable it, each new project starts with a default network. The default network is an auto mode VPC network with prepopulated firewall rules. You can disable the creation of default networks by creating an organization policy with the compute.skipDefaultNetworkCreation constraint. Projects that inherit this policy won't have a default network.
 https://cloud.google.com/vpc/docs/vpc#vpc_networks_and_subnets
-# Desirable
+
 # Custom
  When a custom mode VPC network is created, no subnets are automatically created. This type of network provides you with complete control over its subnets and IP ranges. You decide which subnets to create in regions that you choose by using IP ranges that you specify.
 https://cloud.google.com/vpc/docs/vpc
 
-# Strict
+# no Strict or strict
+
 
 
 ## Connectivity
@@ -179,6 +221,26 @@ Dynamic by default
  When you create a Cloud Router, you can use its default route advertisements or specify custom advertisements. By default, Cloud Router advertises subnets in its region for regional dynamic routing or all subnets in a VPC network for global dynamic routing.
 https://cloud.google.com/network-connectivity/docs/router/how-to/configuring-routing-mode
 https://cloud.google.com/network-connectivity/docs/router/how-to/creating-routers
+
+
+Explanation:
+To create a forwarding rule that sends traffic to a single instance, you must do the following:
+
+    Create a target instance. Your target instance is a single VM instance, but this instance can exist at the time you create the target instance, or it can be created afterward.
+    Create a forwarding rule. Your target instance must exist before you create a forwarding rule. If incoming packets match the IP, protocol, and (if applicable) the port range that is being served by your forwarding rule, the forwarding rule directs that traffic to your target instance.
+
+https://cloud.google.com/compute/docs/protocol-forwarding
+
+
+ For HA VPN gateway, you configure an external peer VPN gateway resource that represents your physical peer gateway in Google Cloud. You can also create this resource as a standalone resource and use it later. To create an external peer VPN gateway, you need the following values from your physical peer gateway, which can also be a third-party software-based gateway. The values for the external peer VPN gateway resource must match the configuration on your physical peer gateway for the VPN to be established:
+
+    The number of interfaces on your physical VPN gateway
+    External IP address or addresses for the peer gateway(s) or interfaces
+    BGP endpoint IP address(es)
+    The IKE preshared key
+    The ASN number
+
+https://cloud.google.com/network-connectivity/docs/vpn/how-to/configuring-peer-gateway
 
 
 
@@ -231,6 +293,15 @@ https://cloud.google.com/network-connectivity/docs/interconnect/quotas
     layer 7-based load balancing to add content-based routing decisions based on attributes, such as the HTTP header and the uniform resource identifier, integration with Cloud CDN for cached content delivery.
 
 https://cloud.google.com/load-balancing/docs/load-balancing-overview
+
+ You can use traffic splitting to specify a percentage distribution of traffic across two or more of the versions within a service. Splitting traffic allows you to conduct A/B testing between your versions and provides control over the pace when rolling out features. Traffic splitting is applied to URLs that do not explicitly target a version.
+https://cloud.google.com/appengine/docs/standard/java/splitting-traffic#gcloud or https://cloud.google.com/appengine/docs/standard/java/tools/uploadinganapp
+
+
+The following underlying technologies enable Google Cloud Platform’s load balancer:  Google Front Ends (GFEs), Andromeda, Maglev, and Envoy proxy. 
+https://cloud.google.com/load-balancing/docs/load-balancing-overview
+
+
 
 ## Pub Sub
  Google Cloud offers an asynchronous messaging services called Pub/Sub. This Big Data Service enables users’ applications to send messages as JSON data structures to a publishing unit called a topic. Big Data Services:
@@ -314,12 +385,22 @@ https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture#no
  Google Cloud Deployment Manager configuration must contain a resources section followed by the list of resources to create. Each resource must contain three components: name, type, and properties. More details can be found at  
 https://cloud.google.com/deployment-manager/docs/fundamentals.
 
+ Google Cloud Deployment Manager is an infrastructure deployment service that automates the creation and management of Google Cloud resources. You can write flexible template and configuration files and use them to create deployments that have a variety of Google Cloud services, such as Cloud Storage, Compute Engine, and Cloud SQL, configured to work together. Of the choices here, the key term infrastructure is the only solution as stated in the GCP documentation given software, hardware, and container are all too ambiguous. It’s also important to note that GCP Deployment Manager is a tool or service offered to help users at all level manage Google Cloud Service deployments more easily.
+https://cloud.google.com/deployment-manager/docs
+
+## Stackdriver
+
+Stackdriver (now Cloud Monitoring) is GCP’s comprehensive monitoring, logging, and alerting product.
+https://cloud.google.com/kubernetes-engine/docs/concepts/kubernetes-engine-overview
+
+Comprehensive
+
 
 
 
 ## Observability
 
-# Cloud Monitoring
+# Cloud Monitoring and logs
 
  Custom metrics are metrics defined by users. Custom metrics use the same elements that the built-in Cloud Monitoring metrics use:
 
@@ -346,6 +427,18 @@ https://cloud.google.com/appengine/docs/standard/java/splitting-traffic#gcloud o
  For outgoing bandwidth, one way to reduce usage is to, whenever possible, set the appropriate Cache-Control header on your responses and set reasonable expiration times for static files. Using public Cache-Control headers in this way will allow proxy servers and your clients' browser to cache responses for the designated period of time. Incoming bandwidth is more difficult to control, since that's the amount of data your users are sending to your app. However, this is a good opportunity to mention DoS Protection Service, which allows you block traffic from IPs that you consider abusive.
 https://cloud.google.com/appengine/docs/standard/python/console/managing-resources and https://cloud.google.com/appengine/docs/standard/php/config/appref
 
+## Audit Logs
+
+ Cloud Audit Logs return three types of logs:
+
+    Admin activity logs: Contain log entries for operations that modify the configuration or metadata of a Compute Engine resource. Any API call that modifies a resource such as creation, deletion, updating, or modifying a resource using a custom verb falls into this category.
+    System event logs: Contain log entries for system maintenance operations on Compute Engine resources.
+    Data access logs: Contain log entries for operations that perform read-only operations that don't modify any data, such as get, list, and aggregated list methods. Unlike audit logs for other services, Compute Engine has only ADMIN_READ data access logs and doesn't generally offer DATA_READ and DATA_WRITE logs. The reason is that DATA_READ and DATA_WRITE logs are used only for services that store and manage user data such as Cloud Storage, Cloud Spanner, and Cloud SQL, and this doesn't apply to Compute Engine. There is one exception to this rule: instance.getSerialPortOutput does generate a DATA_READ log because the method reads data directly from the VM instance.
+
+https://cloud.google.com/compute/docs/logging/audit-logging
+
+
+
 
 
 # Security
@@ -365,6 +458,9 @@ To create a service account, at minimum the user must be granted the Service Acc
   --display-name="DISPLAY_NAME"
 
 
+WAIT 60 SECONDS
+ To create a service account, at minimum, the user must be granted the Service Account Admin role (roles/iam.serviceAccountAdmin) or the Editor basic role (roles/editor). You should not grant basic roles in a production environment, but you can grant them in a development or test environment. After you create a service account, you might need to wait for 60 seconds or more before you use the service account. If you try to use a service account immediately after you create it, and you receive an error, wait at least 60 seconds and try again.
+https://cloud.google.com/iam/docs/creating-managing-service-accounts
 
 
 
@@ -396,3 +492,61 @@ https://cloud.google.com/marketplace/docs and https://cloud.google.com/marketpla
 https://cloud.google.com/kubernetes-engine/docs/how-to/logging
 https://cloud.google.com/logging/docs/export/configure_export_v2
 https://kubernetes.io/docs/reference/labels-annotations-taints/
+
+
+
+
+
+
+
+
+
+## Commands
+
+
+
+When configuring policy routing in GCP Compute Engine VPC to support multiple network interfaces, what command does an administrator or user use via the command line?
+
+gcloud compute ssh multinic-vm.
+
+https://cloud.google.com/vpc/docs/create-use-multiple-interfaces
+
+ To copy an object in one of your Cloud Storage buckets, you can use the gsutil cp command: 
+ 
+ gsutil cp gs://BUCKET_NAME gs://BUCKET_NAME
+https://cloud.google.com/storage/docs/copying-renaming-moving-objects
+
+
+ On-demand queries are charged based on the number of bytes read. For current on-demand query pricing, see the Pricing page.
+To estimate costs before running a query, you can use the following:
+
+    Query validator in the Cloud Console
+    --dry_run flag in the bq command-line tool
+    dryRun parameter when submitting a query job using the API
+    Google Cloud Pricing Calculator
+    Client libraries
+
+https://cloud.google.com/bigquery/docs/estimate-costs#estimating_query_costs
+
+
+ You can create an auto mode network by using the following gcloud command:
+gcloud compute networks create NETWORK \
+ --subnet-mode=auto \
+ --bgp-routing-mode=DYNAMIC_ROUTING_MODE \
+ --mtu=MTU
+Replace the placeholders with valid values:
+
+    NETWORK is a name for the VPC network.
+    DYNAMIC_ROUTING_MODE can be either global or regional to control the behavior of Cloud Routers in the network. For more information, refer to dynamic routing mode.
+    MTU is the maximum transmission unit of the network. MTU can eiFloadther be 1460 (default) or 1500. Review the MTU information in the concepts guide before setting the MTU to 1500.
+
+
+
+## redundant
+The following services have one or more multiregional deployment areas in addition to any regional deployment areas: Datastore, Cloud Key Management Service, Cloud Storage, BigQuery, Cloud Spanner, Cloud Bigtable, Cloud Healthcare API.F
+
+
+## Data flow dataflow
+
+Google Cloud offers a managed service called DataFlow and a set of SDKs that users can use to perform batch and streaming data processing data. Big Data Services: https://cloud.google.com/docs/overview/cloud-platform-services
+
