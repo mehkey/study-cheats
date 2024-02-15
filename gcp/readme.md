@@ -9,6 +9,8 @@ https://cloud.google.com/products?hl=en
 https://passionatedevelopment.com/blog/2021/05/09/gcp-associate-cloud-engineer-cheatsheet/
 
 
+https://cloud.google.com/compute/docs/general-purpose-machines#t2a_machines
+
 ## Compute
 
 # VM
