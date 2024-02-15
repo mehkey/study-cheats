@@ -5,6 +5,10 @@ https://cloud.google.com/products?hl=en
 https://cloud.google.com/products?hl=en
 
 
+
+https://passionatedevelopment.com/blog/2021/05/09/gcp-associate-cloud-engineer-cheatsheet/
+
+
 ## Compute
 
 # VM
