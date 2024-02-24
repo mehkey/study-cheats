@@ -13,7 +13,13 @@ https://cloud.google.com/compute/docs/general-purpose-machines#t2a_machines
 
 https://inthecloud.withgoogle.com/cloud-certification/GC-certification-challenge-overview.pdf
 
-## Compute
+#### Projects
+
+## Organization
+
+
+
+#### Compute
 
 # VM
 
@@ -104,8 +110,9 @@ Groups Batch queries
  BigQuery offers batch queries. BigQuery queues each batch query on your behalf and starts the query as soon as idle resources are available in the BigQuery shared resource pool. This usually occurs within a few minutes. If BigQuery hasn't started the query within 24 hours, BigQuery changes the job priority to interactive. Batch queries don't count toward your concurrent rate limit, which can make it easier to start many queries at once. Batch queries use the same resources as interactive (on-demand) queries.
 https://cloud.google.com/bigquery/docs/running-queries
 
-## Storages
-## Big Table
+#### Storages
+
+# Big Table
 
  Cloud Bigtable is Google's NoSQL Big Data database service. It's the same database that powers many core Google services, including Search, Analytics, Maps, and Gmail.
 https://cloud.google.com/bigtable/docs/schema-design-time-series
@@ -158,7 +165,7 @@ https://cloud.google.com/appengine/docs/python/datastore/
 
 
 
-## Network
+#### Network
 
 # VPC 
 
@@ -174,7 +181,7 @@ Each VPC network implements a distributed virtual firewall that you can configur
 Projects can contain multiple VPC networks. Unless you create an organizational policy that prohibits it, new projects start with a default network (an auto mode VPC network) that has one subnetwork (subnet) in each region.
 https://cloud.google.com/vpc/docs/vpc
 
-## VPC modes
+##### VPC modes
 
 # Auto
  Unless you choose to disable it, each new project starts with a default network. The default network is an auto mode VPC network with prepopulated firewall rules. You can disable the creation of default networks by creating an organization policy with the compute.skipDefaultNetworkCreation constraint. Projects that inherit this policy won't have a default network.
@@ -188,7 +195,7 @@ https://cloud.google.com/vpc/docs/vpc
 
 
 
-## Connectivity
+#### Connectivity
 
 # VPN
 FOUR_IPS_REDUNDANCY
@@ -285,7 +292,7 @@ https://cloud.google.com/network-connectivity/docs/interconnect/concepts/dedicat
 https://cloud.google.com/network-connectivity/docs/how-to/choose-product#cloud-interconnect
 https://cloud.google.com/network-connectivity/docs/interconnect/quotas
 
-## Load balancer
+#### Load balancer
 
  Google Cloud offers the following load balancing features:
 
@@ -406,7 +413,7 @@ Comprehensive
 
 
 
-## Observability
+#### Observability
 
 # Cloud Monitoring and logs
 
@@ -435,7 +442,7 @@ https://cloud.google.com/appengine/docs/standard/java/splitting-traffic#gcloud o
  For outgoing bandwidth, one way to reduce usage is to, whenever possible, set the appropriate Cache-Control header on your responses and set reasonable expiration times for static files. Using public Cache-Control headers in this way will allow proxy servers and your clients' browser to cache responses for the designated period of time. Incoming bandwidth is more difficult to control, since that's the amount of data your users are sending to your app. However, this is a good opportunity to mention DoS Protection Service, which allows you block traffic from IPs that you consider abusive.
 https://cloud.google.com/appengine/docs/standard/python/console/managing-resources and https://cloud.google.com/appengine/docs/standard/php/config/appref
 
-## Audit Logs
+#### Audit Logs
 
  Cloud Audit Logs return three types of logs:
 
@@ -449,9 +456,9 @@ https://cloud.google.com/compute/docs/logging/audit-logging
 
 
 
-# Security
+##### Security
 
-## IAM
+# IAM
 
  To grant a role to a single member, you can also use the add-iam-policy-binding command. See the appropriate reference for more details:
 
