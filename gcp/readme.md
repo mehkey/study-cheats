@@ -1,10 +1,19 @@
 
 
-https://cloud.google.com/products?hl=en
+
+https://googlecloudcheatsheet.withgoogle.com/
+
+
 
 https://cloud.google.com/products?hl=en
 
+https://cloud.google.com/products?hl=en
 
+
+https://jayendrapatil.com/google-cloud-gcloud-cheat-sheet/
+
+
+https://github.com/AndrewJBateman/google-cloud-resources/tree/master
 
 https://passionatedevelopment.com/blog/2021/05/09/gcp-associate-cloud-engineer-cheatsheet/
 
@@ -13,15 +22,50 @@ https://cloud.google.com/compute/docs/general-purpose-machines#t2a_machines
 
 https://inthecloud.withgoogle.com/cloud-certification/GC-certification-challenge-overview.pdf
 
-#### Projects
+
+
+https://tutorialsdojo.com/google-cloud-platform-gcp-cheat-sheets/
+
+https://passionatedevelopment.com/blog/2021/05/09/gcp-associate-cloud-engineer-cheatsheet/
+
+https://tutorialsdojo.com/gcp-associate-cloud-engineer-exam-study-guide/
+
+https://etiennenoumen.medium.com/gcp-cheat-sheets-for-associate-cloud-engineer-c0bf353ea7cb
+
+https://github.com/thesaravanakumar/Google-Cloud-Associate-Cloud-Engineer
+
+
+https://www.cloudadvocate.net/p/associate-cloud-engineer-study-notes.html
+
+https://github.com/AndrewJBateman/google-cloud-resources?tab=readme-ov-file
+
+
+https://cloud.google.com/appengine/docs/flexible/reference/dispatch-yaml?tab=python
+
+lookup 
+VPN setup
+commands page
+https://cloud.google.com/compute/docs/manage-os
+# Projects
 
 ## Organization
 
+* Folder - contains number of projects & subfolders
+* Project - container for a set of related resources
+* Projects are separate from billing accounts and their free tier, e.g free tier is not tied to projects but resources.
+
+## Audit
+Cloud Audit Logs, provide the following logs:
+
+##  Google Cloud Deployment Manager
+Cloudformation or AZ Blueprints
 
 
-#### Compute
+# Compute
 
-# VM
+#### VM
+
+* Unlike managed instance groups, unmanaged instance groups are just collections of distinct VMs that do not share a common instance template. You simply create a group, and add individual VMs to the group. In the Google Cloud console, go to the Instance groups page. Click Create instance group.
 
  You use the gcloud compute instances create command and include the --source-snapshot flag:
 gcloud compute instances create VM_NAME \
@@ -88,21 +132,32 @@ https://cloud.google.com/monitoring/agent
     Managed instance groups (MIGs) let you operate apps on multiple identical VMs. You can make your workloads scalable and highly available by taking advantage of automated MIG services, including autoscaling, autohealing, regional (multiple zone) deployment, and automatic updating.
     Unmanaged instance groups let you load balance across a fleet of VMs that you manage yourself.
 
+Google Cloud assigns regional internal IP addresses for VM instances, including GKE pods, nodes, and services. They are also used for Internal TCP/UDP Load Balancing and Internal HTTP(S) Load Balancing
 
-# Cloud Run
+
+#### Cloud Run
 
 Container as a service
+Serverless
 
-# Appengine
+#### Appengine
 
-# dataProc
+PAAS
+
+#### dataProc
 Dataproc is a fully managed and highly scalable service for running Apache Hadoop, Apache Spark, Apache Flink, Presto, and 30+ open source tools and frameworks. Use Dataproc for data lake modernization, ETL, and secure data science, at scale, integrated with Google Cloud, at a fraction of the cost.
 
  Dataproc is priced at only 1 cent per virtual CPU in your cluster per hour, on top of the other Cloud Platform resources you use. In addition to this low price, Dataproc clusters can include preemptible instances that have lower compute prices, reducing your costs even further. Instead of rounding your usage up to the nearest hour, Dataproc charges you only for what you really use with second-by-second billing and a low, one-minute-minimum billing period.
 https://cloud.google.com/dataproc/docs/concepts/overview
 
 
-# Big Query BigQuery
+#### Dataperp
+Dataprep by Trifacta is an intelligent data service for visually exploring, cleaning, and preparing structured and unstructured data for analysis, reporting, and machine learning. Because Dataprep is serverless and works at any scale, there is no infrastructure to deploy or manage.
+
+#### Cloud data Fusion
+Cloud Data Fusion is a managed service that is designed for building data transformation pipelines. Compute Engine is not a managed service. Cloud Dataprep is used to prepare data for analytics and machine learning. Cloud Build is a service for creating container images.
+
+#### Big Query BigQuery
  When you run a query, a temporary, cached results table is created in a special dataset referred to as an anonymous dataset. Unlike regular datasets that inherit permissions from the IAM resource hierarchy model (project and organization permissions), access to anonymous datasets is restricted to the dataset owner. The owner of an anonymous dataset is the user who ran the query that produced the cached result.
 https://cloud.google.com/bigquery/docs/cached-results
 
@@ -110,26 +165,62 @@ Groups Batch queries
  BigQuery offers batch queries. BigQuery queues each batch query on your behalf and starts the query as soon as idle resources are available in the BigQuery shared resource pool. This usually occurs within a few minutes. If BigQuery hasn't started the query within 24 hours, BigQuery changes the job priority to interactive. Batch queries don't count toward your concurrent rate limit, which can make it easier to start many queries at once. Batch queries use the same resources as interactive (on-demand) queries.
 https://cloud.google.com/bigquery/docs/running-queries
 
-#### Storages
+The correct answer is to use the --dry-run option with the bq select command.
 
-# Big Table
+You would like to experiment with different ways of writing these queries.
+
+
+
+
+# Storages
+
+#### Big Table
 
  Cloud Bigtable is Google's NoSQL Big Data database service. It's the same database that powers many core Google services, including Search, Analytics, Maps, and Gmail.
 https://cloud.google.com/bigtable/docs/schema-design-time-series
 
+#### 
 
 
-# Local SSD
+#### Local SSD
  Local SSD (block) is the best GCP Cloud storage product for flash-optimized databases.  https://cloud.google.com/products/storage
 
-# Persistent Disk
+#### Persistent Disk
 
  When adding additional disk(s) through GCP, you can set the following parameters: Encryption Key Management, Source Image Type, and Disk Type.
 https://cloud.google.com/compute/docs/instances/create-start-instance
 
 
+#### Alloy DB
+Managed PostgreSQL
 
-# Cloud Storage
+#### Cloud SQL vs Cloud Spanner
+
+#### Dataplex 
+Manage contralized data governance
+
+
+#### Dataflow
+Stream batch
+
+#### Cloud GIS
+GIS DB
+
+#### Dataform ETL
+
+#### Cloud Storage
+
+When to use different storage classes available in GCP (Ex: Multi-regional vs Regional vs Nearline vs Coldline)
+
+Changing or conversion of storage classes. (Ex: 
+* Multi-regional 
+* Nearline
+*  Multi-regional
+*   Coldline
+
+Nearline Storage is a class of Cloud Storage designed for objects that will be accessed at most once every 30 days. Coldline Storage is suitable for objects accessed at most once per year. Multi-regional storage is best suited for objects that should have low latency access from multiple regions. Persistent disks should not be used for archival storage.
+
+
  Cloud Storage buckets allow an administrator to host a static website, and it’s recommended as the best solution.
 https://cloud.google.com/storage/docs/hosting-static-website
 
@@ -156,7 +247,11 @@ https://cloud.google.com/storage/docs/access-control/signed-urls
 https://cloud.google.com/storage/docs/metadata
 
 
-# Filestore Datastore
+#### Filestore Datastore
+
+
+
+#### Firestore
 
  Cloud Datastore is the GCP service that is a NoSQL database. Cloud Firestore Datastore method that is a NoSQL document database built for automatic scaling, high performance, and ease of application development. It is the newest version of Datastore and introduces several improvements over Datastore.
 https://cloud.google.com/appengine/docs/python/datastore/
@@ -165,11 +260,16 @@ https://cloud.google.com/appengine/docs/python/datastore/
 
 
 
-#### Network
+# Network
 
-# VPC 
 
+##### Firewall
 Each VPC network implements a distributed virtual firewall that you can configure. Firewall rules allow you to control which packets are allowed to travel to which destinations. Every VPC network has two implied firewall rules that block all incoming connections and allow all outgoing connections. The default network has additional firewall rules, including the default-allow-internal rule, which permits communication among instances in the network. https://cloud.google.com/vpc/docs/overview
+
+
+Firewall rule logging can be enabled for each firewall rule. Each time the rule is applied to allow or deny traffic, a connection record is created. Connection records can be viewed in Cloud Logging.
+
+#### VPC 
 
  Within GCP, a virtual private cloud (VPC) network’s internal IP addresses are accessible from the user’s on-premises network. The user does not need a NAT device or VPN tunnel to reach internal IP addresses. A VPC network is a virtual version of a physical network, implemented inside of Google's production network, using Andromeda. A VPC network provides the following:
 
@@ -181,13 +281,13 @@ Each VPC network implements a distributed virtual firewall that you can configur
 Projects can contain multiple VPC networks. Unless you create an organizational policy that prohibits it, new projects start with a default network (an auto mode VPC network) that has one subnetwork (subnet) in each region.
 https://cloud.google.com/vpc/docs/vpc
 
-##### VPC modes
+### VPC modes
 
-# Auto
+### Auto
  Unless you choose to disable it, each new project starts with a default network. The default network is an auto mode VPC network with prepopulated firewall rules. You can disable the creation of default networks by creating an organization policy with the compute.skipDefaultNetworkCreation constraint. Projects that inherit this policy won't have a default network.
 https://cloud.google.com/vpc/docs/vpc#vpc_networks_and_subnets
 
-# Custom
+### Custom
  When a custom mode VPC network is created, no subnets are automatically created. This type of network provides you with complete control over its subnets and IP ranges. You decide which subnets to create in regions that you choose by using IP ranges that you specify.
 https://cloud.google.com/vpc/docs/vpc
 
@@ -195,10 +295,11 @@ https://cloud.google.com/vpc/docs/vpc
 
 
 
-#### Connectivity
+# Connectivity
 
-# VPN
+#### VPN
 FOUR_IPS_REDUNDANCY
+
 Explanation:
 The HA VPN API contains an option for REDUNDANCY_TYPE, which represents the number of interfaces you configure for the external VPN gateway resource.
 The gcloud commands automatically infer the following values of REDUNDANCY_TYPE from the number of interfaces you provide in the interface ID when you configure an external VPN gateway resource:
@@ -261,7 +362,7 @@ https://cloud.google.com/network-connectivity/docs/vpn/how-to/configuring-peer-g
 
 # Peering
 
-# Cloud Interconnect
+#### Cloud Interconnect
 
  Cloud Interconnect provides low latency, high availability connections that enable you to reliably transfer data between your on-premises and Google Cloud virtual private cloud (VPC) networks. Also, Interconnect connections provide internal IP address communication, which means internal IP addresses are directly accessible from both networks.
 https://cloud.google.com/network-connectivity/docs/interconnect/concepts/overview
@@ -317,49 +418,50 @@ The following underlying technologies enable Google Cloud Platform’s load bala
 https://cloud.google.com/load-balancing/docs/load-balancing-overview
 
 
+URL maps specify direct requests to particular services. Routes are used to specify paths to destination IP addresses outside a subnet. Firewall rules control the flow of traffic on a network. Traces are used to understand performance characteristics of services in a distributed system.
 
-## Pub Sub
+#### Pub Sub
  Google Cloud offers an asynchronous messaging services called Pub/Sub. This Big Data Service enables users’ applications to send messages as JSON data structures to a publishing unit called a topic. Big Data Services:
 https://cloud.google.com/docs/overview/cloud-platform-services
 
 
 
-## AI
+# AI
 
-# AI Platform
+#### AI Platform
 
  AI Platform combines the managed infrastructure of Google Cloud with the power and flexibility of TensorFlow. You can use it to train your machine learning models at scale, and to host trained models to make predictions about new data in the cloud. AI Platform enables you to train machine learning models by running TensorFlow training applications on Google Cloud and hosts those trained models for you, so you can use them to get predictions about new data. AI Platform manages the computing resources that your training job needs to run, so you can focus more on your model than on hardware configuration or resource management.
 Google Cloud offers a managed service called machine learning services. Machine Learning APIs: https://cloud.google.com/docs/overview/cloud-platform-services
 
 
 
-# DialogFlow
+#### DialogFlow
 
 Google Cloud offers a variety of APIs that enable you to take advantage of Google's ML without creating and training your own models. Dialogflow lets you build conversational interfaces for websites, mobile applications, popular messaging platforms, and IoT devices. You can use it to build interfaces, such as chatbots, that are capable of natural and rich interactions with humans. https://cloud.google.com/docs/overview/cloud-platform-services
 
-# Cloud Trslation
+#### Cloud Trslation
 
 
 
-# Cloud Vision
+#### Cloud Vision
 
 
 
-# Cloud Recognition
+#### Cloud Recognition
 
 
 
 
 
-## Multi Cloud
+# Multi Cloud
 
-# Anthos
+#### Anthos
 
 
 
-## Data Transfer
+# Data Transfer
 
-# Data Transfer Service
+#### Data Transfer Service
 
  Data Transfer Services is a storage product used to collect research data, move machine language, artificial intelligence training datasets, and manage migration from S3 to Google Cloud.  Google Cloud provides a variety of storage services including consistent, scalable, large-capacity data storage in Cloud Storage. Google Cloud uses persistent disks on Compute Engine for use as a primary storage of instances. GCP Cloud Storage comes in several flavors: Standard Cloud Storage, Cloud Storage Nearline, Cloud Storage Coldline, and Cloud Storage Archive. Finally, Google Cloud offers fully managed NFS file servers in Filestore.
 Storage Services - https://cloud.google.com/docs/overview/cloud-platform-services and https://cloud.google.com/products/storage
@@ -372,7 +474,7 @@ https://cloud.google.com/vpc/docs/vpc
 
 # Kubernetes
 
-## GKE
+#### GKE
 
  To create a Kubernetes cluster on GCP that can autoscale, the user creates the cluster and enables autoscaling as the cluster is created.
 https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler
@@ -394,14 +496,32 @@ https://cloud.google.com/kubernetes-engine/docs/concepts/deployment
 https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture#nodes
 
 
+Explanation
+Node pools are used to configure resources for particular workloads. All nodes in a node pool are configured the same. Replica sets and deployments do not control the number of CPUs or amount of memory.
+
+want to use Cloud Operations for GKE instead of legacy monitoring and logging. If you create the cluster using a gcloud container clusters create command,
+--logging and --monitoring.
+
+Kubernete Engine collects log data written to standard output (STDOUT) and standard error (STDERR).
+
+The correct command is to use kubectl autoscale deployment specifying the appropriate min, max, and cpu percent. The other options are not valid commands.
+
 # Deployment
 
-## Deployment Manager
+#### Deployment Manager
  Google Cloud Deployment Manager configuration must contain a resources section followed by the list of resources to create. Each resource must contain three components: name, type, and properties. More details can be found at  
 https://cloud.google.com/deployment-manager/docs/fundamentals.
 
  Google Cloud Deployment Manager is an infrastructure deployment service that automates the creation and management of Google Cloud resources. You can write flexible template and configuration files and use them to create deployments that have a variety of Google Cloud services, such as Cloud Storage, Compute Engine, and Cloud SQL, configured to work together. Of the choices here, the key term infrastructure is the only solution as stated in the GCP documentation given software, hardware, and container are all too ambiguous. It’s also important to note that GCP Deployment Manager is a tool or service offered to help users at all level manage Google Cloud Service deployments more easily.
 https://cloud.google.com/deployment-manager/docs
+
+#### Clout Artifact Registry
+
+gcloud artifacts repositories list.
+
+The correct command is gcloud artifacts repositories list. The other options are not valid commands.
+
+
 
 ## Stackdriver
 
@@ -410,12 +530,16 @@ https://cloud.google.com/kubernetes-engine/docs/concepts/kubernetes-engine-overv
 
 Comprehensive
 
+* Creating and configuring workspaces
+How to add projects from different GCP accounts to single Stackdriver account via GCP console
+Importance of Stackdriver in the Google cloud and how it works. Monitors GCP and AWS resources.
+
+* CIDR: Classless inter-domain routing - a set of Internet protocol (IP) standards that is used to create unique identifiers for networks and individual devices.
 
 
+# Observability
 
-#### Observability
-
-# Cloud Monitoring and logs
+#### Cloud Monitoring and logs
 
  Custom metrics are metrics defined by users. Custom metrics use the same elements that the built-in Cloud Monitoring metrics use:
 
@@ -442,7 +566,13 @@ https://cloud.google.com/appengine/docs/standard/java/splitting-traffic#gcloud o
  For outgoing bandwidth, one way to reduce usage is to, whenever possible, set the appropriate Cache-Control header on your responses and set reasonable expiration times for static files. Using public Cache-Control headers in this way will allow proxy servers and your clients' browser to cache responses for the designated period of time. Incoming bandwidth is more difficult to control, since that's the amount of data your users are sending to your app. However, this is a good opportunity to mention DoS Protection Service, which allows you block traffic from IPs that you consider abusive.
 https://cloud.google.com/appengine/docs/standard/python/console/managing-resources and https://cloud.google.com/appengine/docs/standard/php/config/appref
 
-#### Audit Logs
+#### Cloud Trace
+
+
+#### Cloud Debugger
+
+
+# Audit Logs
 
  Cloud Audit Logs return three types of logs:
 
@@ -456,9 +586,9 @@ https://cloud.google.com/compute/docs/logging/audit-logging
 
 
 
-##### Security
+# Security
 
-# IAM
+#### IAM
 
  To grant a role to a single member, you can also use the add-iam-policy-binding command. See the appropriate reference for more details:
 
@@ -479,7 +609,7 @@ https://cloud.google.com/iam/docs/creating-managing-service-accounts
 
 
 
-##  Google Cloud Deployment Manager ( Azure Blueprint, AWS CloudFormation)
+####  Google Cloud Deployment Manager ( Azure Blueprint, AWS CloudFormation)
  Google Cloud Deployment Manager is an infrastructure deployment service that automates the creation and management of Google Cloud resources. You can write flexible template and configuration files and use them to create deployments that have a variety of Google Cloud services, such as Cloud Storage, Compute Engine, and Cloud SQL, configured to work together. It’s also important to note that GCP Deployment Manager is a tool or service offered to help users at all levels manage Google Cloud Service deployments more easily.
 A configuration describes all the resources you want for a single deployment. A configuration is a file written in YAML syntax that lists each of the resources you want to create and its respective resource properties. A configuration must contain a resources: section followed by the list of resources to create.
 https://cloud.google.com/deployment-manager/docs
@@ -492,7 +622,7 @@ https://cloud.google.com/deployment-manager/docs or https://cloud.google.com/dep
 
 
 
-## Labels (AWS and Azure Tags)
+#### Labels (AWS and Azure Tags)
 
  When you deploy a VM solution from GCP Marketplace, the deployment is created with several default labels, which are a way to organize your deployments. Typically, the labels include a solution ID, and the partner ID. One of the labels is marketplace-suppress-benign-warnings, which blocks warnings that are typically not relevant for Cloud Marketplace solutions.
 https://cloud.google.com/marketplace/docs and https://cloud.google.com/marketplace/docs/manage-deployments
@@ -502,11 +632,18 @@ https://cloud.google.com/marketplace/docs and https://cloud.google.com/marketpla
 
 
 
-## Stack Driver
+#### Stack Driver
  In GCP, when creating a Kubernetes Engine cluster, the following approaches are recommended as outlined in the Google Cloud how-to guides:  1. Use the Stackdriver Logging export feature to create a sink to BigQuery.  Specify a filter expression to export log records related to the Kubernetest cluster only 2. Turn on Stackdriver Logging during the Kubernetes Engine cluster creation. 
 https://cloud.google.com/kubernetes-engine/docs/how-to/logging
 https://cloud.google.com/logging/docs/export/configure_export_v2
 https://kubernetes.io/docs/reference/labels-annotations-taints/
+
+
+
+
+
+
+The correct command is gcloud projects describe followed by the PROJECT_ID or the PROJECT_NAME.
 
 
 
@@ -564,4 +701,90 @@ The following services have one or more multiregional deployment areas in additi
 ## Data flow dataflow
 
 Google Cloud offers a managed service called DataFlow and a set of SDKs that users can use to perform batch and streaming data processing data. Big Data Services: https://cloud.google.com/docs/overview/cloud-platform-services
+
+
+
+#### like cognito
+Cloud Identity
+A unified identity, access, app, and endpoint management (IAM/EMM) platform.
+
+
+
+# Other
+
+
+* When you create a project, you are automatically granted the roles/owner role. The owner role includes permissions granted by roles/editor, roles/viewer, and roles/browser.
+* gcloud project describe The correct command is gcloud projects describe followed by the PROJECT_ID or the PROJECT_NAME.
+* Folders are used to group resources that share common IAM policies. Service accounts are specific to a set of operating requirements within a project. Permissions are associated with roles but not directly with folders. IAM roles are granted to identities, not folders.
+* Labels are key-value pairs attached to resources and used to manage them. The manager could use a key-value pair with the key 'team-name' and the value the name of the team that created the resource. Audit logs do not necessarily have the names of teams that own a resource. Traces are used for performance monitoring and analysis. IAM policies are used to control access to resources, not to track which team created them.
+* Cloud Audit Logs maintain three audit logs: Admin Activity logs, Data Access logs, and System Event logs. There is no such thing as a Policy Access log, a User Login log, or a Performance Metric log in GCP Audit Logs. AND Policy dinied logs
+* Cloud Identity provides domain verification records, which are added to DNS settings for the domain.
+* billing.accounts.create is the permission needed to create a billing account. Roles are sets of permissions but they are not permissions themselves.
+* Gcloud init will authorize access and perform other common setup steps. 
+* Gcloud auth login will authorize access only.
+* You want to use Cloud Identity to create identities. You have received a verification record for your domain. Where would you add that record?
+* billing.accounts.create is the permission needed to create a billing account. Roles are sets of permissions but they are not permissions themselves.
+* You will be running an application that requires high levels of security. You want to ensure the application does not run on a server that has been compromised by a rootkit or other kernel-level malware. What kind of virtual machine would you use?
+* To copy files to a VM, a firewall rule must be in place to allow traffic on port 22, the default SSH port,
+* The source and cloned disk must be in the same zone and region and must be of the same type. The size of the clone must be at least the size of the source disk.
+* Heterogeneous clusters can be run on unmanaged instance groups but not managed instance groups.
+* An instance template is needed to enable Compute Engine to automatically add instances to a managed instance group.
+* App Engine vs Compute Engine vs 
+* On a sole tenant node, only VMs from the same project will run on that node. They do not need to use the same operating system. Sole tenant nodes are not restricted to a single VM.
+* Target pools must have a health check to function properly. Nodes can be in different zones but must be in the same region. Cloud Monitoring and Cloud Logging are useful but they are not required for the target pool to function properly. Nodes in a pool have the same configuration.
+* Cloud SQL is a managed relational database service suitable for regionally used applications. Cloud Spanner is also a managed relational database but it is designed for multi-region and global applications. BigQuery is not used for transaction processing systems. Cloud Dataproc is a managed Spark/Hadoop service, not a relational database.
+* Bigtable is a wide column database with low latency writes that is well suited for IoT data storage. BigQuery is a data warehouse service. Cloud Dataproc is a managed Spark/Hadoop service. Cloud Spanner is a global-scale relational database designed for transaction processing.
+* queue that can store the data until the processing application is able to process it
+* Cloud Dataproc is a managed Spark/Hadoop service that can be used to migrate Hadoop clusters GCP.
+* To rename a file in cloud storage, use the move command gsutil mv.
+* Access is granted to Cloud Storage objects using IAM or access control lists (ACLs). When uniform bucket-level access is applied, users only have access through IAM roles and permissions. A users that could access objects before uniform bucket-level access is applied but not after must have had access through ACLs.
+
+
+A photographer wants to share images they have stored in a Cloud Storage bucket called free-photos-on-gcp. What command would you use to allow all users to read these files?
+The correct command is gsutil iam ch allUsers:objectViewer gs://free-photos-on-gcp.
+
+The correct command for changing the storage class is gcloud storage objects update with the target storage class and bucket specified.
+
+OTher
+target-http-proxies
+target-pools
+url-maps
+zones
+
+  
+
+
+Changing or conversion of storage classes. (Ex: Multi-regional to Nearline, Multi-regional to Coldline, etc)
+
+
+Violence and hate speach
+
+Bias Offensive or Hurtful
+
+VIolence or Hate Speech
+
+
+
+
+Stackdriver
+
+Lifecycle Storage
+
+Interconnect
+
+Billing accounts link to project
+
+List and describe config
+
+
+died of blood clot
+
+IAM roles
+
+Appengine Versions
+and split traffic
+
+marketplace
+
+
 
